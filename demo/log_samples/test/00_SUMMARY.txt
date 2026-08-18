@@ -1,0 +1,11 @@
+CI FAILURE TRIAGE — artifact summary
+log type      : test
+source        : OFFLINE — saved response (no API key / --offline set)
+
+full log      : 12,017 lines, 959 KB
+trimmed log   : 40 lines (99.7% removed), 2 pattern matches
+prompt sent   : 3,409 characters
+
+category      : test_failure
+confidence    : 0.95
+validation    : 6/6 rules passed

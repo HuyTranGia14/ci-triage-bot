@@ -1,0 +1,22 @@
+2026-07-25T03:11:02.1043921Z ##[group]Run actions/checkout@v4
+2026-07-25T03:11:03.8871240Z Syncing repository: octocat/auth-service
+2026-07-25T03:11:05.2210043Z ##[group]Run actions/setup-python@v5
+2026-07-25T03:11:08.4410032Z Successfully set up CPython (3.11.9)
+2026-07-25T03:11:09.0021445Z ##[group]Run pip install -r requirements.txt
+2026-07-25T03:11:10.3320981Z Collecting fastapi==0.111.0 (from -r requirements.txt (line 1))
+2026-07-25T03:11:10.9981203Z   Downloading fastapi-0.111.0-py3-none-any.whl (91 kB)
+2026-07-25T03:11:11.5540210Z Collecting requests==2.31.0 (from -r requirements.txt (line 9))
+2026-07-25T03:11:11.8872001Z   Downloading requests-2.31.0-py3-none-any.whl (62 kB)
+2026-07-25T03:11:12.2210034Z Collecting urllib3==2.2.1 (from -r requirements.txt (line 14))
+2026-07-25T03:11:12.6650012Z   Downloading urllib3-2.2.1-py3-none-any.whl (121 kB)
+2026-07-25T03:11:14.1120876Z INFO: pip is looking at multiple versions of requests to determine which version is compatible with other requirements. This could take a while.
+2026-07-25T03:11:16.4430120Z ERROR: Cannot install -r requirements.txt (line 9) and urllib3==2.2.1 because these package versions have conflicting dependencies.
+2026-07-25T03:11:16.4431660Z The conflict is caused by:
+2026-07-25T03:11:16.4432210Z     The user requested urllib3==2.2.1
+2026-07-25T03:11:16.4432880Z     requests 2.31.0 depends on urllib3<3 and >=1.21.1
+2026-07-25T03:11:16.4433512Z     boto3 1.26.90 depends on urllib3<1.27 and >=1.25.4
+2026-07-25T03:11:16.4434780Z To fix this you could try to:
+2026-07-25T03:11:16.4435330Z 1. loosen the range of package versions you've specified
+2026-07-25T03:11:16.4436001Z 2. remove package versions to allow pip to attempt to solve the dependency conflict
+2026-07-25T03:11:16.9980021Z ERROR: ResolutionImpossible: for help visit https://pip.pypa.io/en/latest/topics/dependency-resolution/
+2026-07-25T03:11:17.1120043Z ##[error]Process completed with exit code 1.

@@ -1,0 +1,40 @@
+{
+  "name": "triage_result",
+  "description": "Structured triage report for a failed CI job.",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "failure_category": {
+        "type": "string",
+        "enum": [
+          "flaky_test",
+          "test_failure",
+          "dependency_issue",
+          "syntax_error",
+          "configuration_error",
+          "infrastructure_timeout",
+          "unknown"
+        ],
+        "description": "The single category that best describes the root cause of this CI failure."
+      },
+      "confidence_score": {
+        "type": "number",
+        "description": "Confidence in the assigned category, from 0.0 to 1.0."
+      },
+      "root_cause": {
+        "type": "string",
+        "description": "Plain-English explanation of why the job failed. Must reference the actual error text found in the log, not generic advice. Maximum 600 characters."
+      },
+      "suggested_fix": {
+        "type": "string",
+        "description": "One concrete, actionable fix tied to the specific error in the log. Maximum 600 characters."
+      }
+    },
+    "required": [
+      "failure_category",
+      "confidence_score",
+      "root_cause",
+      "suggested_fix"
+    ]
+  }
+}

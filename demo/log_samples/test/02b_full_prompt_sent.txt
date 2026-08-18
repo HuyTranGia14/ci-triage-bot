@@ -1,0 +1,48 @@
+Analyse the following failed CI job log.
+
+Repository: nmcnpm-2026/demo-shop
+Workflow run: 8471023
+Commit: 3f9c1ab
+
+```
+2026-08-12T04:02:31.16Z   Installing collected packages: users-lib
+2026-08-12T04:02:31.16Z ##[debug]Result: true
+2026-08-12T04:02:31.16Z   Building wheel for checkout-lib (setup.py): started
+2026-08-12T04:02:31.16Z Cache restored from key: setup-python-Linux-x64-pip-1a3f9c
+2026-08-12T04:02:31.16Z Requirement already satisfied: billing-lib in /opt/hostedtoolcache/Python/3.11.9/x64/lib
+2026-08-12T04:02:31.16Z tests/test_cart.py::test_inventory PASSED                                    [ 99%]
+2026-08-12T04:02:31.17Z ##[debug]Evaluating condition for step: 'Run auth'
+2026-08-12T04:02:31.17Z Downloading notifications-lib-1.1.0-py3-none-any.whl (24 kB)
+2026-08-12T04:02:31.17Z   Installing collected packages: billing-lib
+2026-08-12T04:02:31.17Z ##[debug]Result: true
+2026-08-12T04:02:31.17Z   Building wheel for users-lib (setup.py): started
+2026-08-12T04:02:31.17Z Cache restored from key: setup-python-Linux-x64-pip-4a3f9c
+2026-08-12T04:02:31.18Z Requirement already satisfied: catalog-lib in /opt/hostedtoolcache/Python/3.11.9/x64/lib
+2026-08-12T04:02:31.18Z tests/test_catalog.py::test_users PASSED                                    [ 99%]
+2026-08-12T04:02:31.18Z ##[debug]Evaluating condition for step: 'Run reviews'
+2026-08-12T04:02:31.18Z Downloading notifications-lib-4.6.6-py3-none-any.whl (27 kB)
+2026-08-12T04:02:31.18Z   Installing collected packages: search-lib
+2026-08-12T04:02:31.18Z ##[debug]Result: true
+2026-08-12T04:02:31.19Z   Building wheel for cart-lib (setup.py): started
+2026-08-12T04:02:31.19Z Cache restored from key: setup-python-Linux-x64-pip-4a3f9c
+2026-08-12T04:02:31.19Z Requirement already satisfied: orders-lib in /opt/hostedtoolcache/Python/3.11.9/x64/lib
+2026-08-12T04:02:31.19Z tests/test_reviews.py::test_search PASSED                                    [ 99%]
+2026-08-12T04:02:31.19Z ##[debug]Evaluating condition for step: 'Run checkout'
+2026-08-12T04:02:31.19Z Downloading search-lib-4.5.0-py3-none-any.whl (21 kB)
+2026-08-12T04:02:31.20Z   Installing collected packages: notifications-lib
+2026-08-12T04:02:31.20Z ##[debug]Result: true
+2026-08-12T04:02:31.20Z   Building wheel for cart-lib (setup.py): started
+2026-08-12T04:02:31.20Z Cache restored from key: setup-python-Linux-x64-pip-8a3f9c
+2026-08-12T04:02:31.22Z =================================== FAILURES ===================================
+2026-08-12T04:02:31.24Z ___________________________ test_cart_total_rounding ___________________________
+2026-08-12T04:02:31.26Z tests/test_cart.py:87: in test_cart_total_rounding
+2026-08-12T04:02:31.28Z     assert cart.total() == 19.99
+2026-08-12T04:02:31.30Z E   assert 19.990000000000002 == 19.99
+2026-08-12T04:02:31.32Z E    +  where 19.990000000000002 = <bound method Cart.total of <src.cart.Cart object>>()
+2026-08-12T04:02:31.34Z src/cart.py:42: in total
+2026-08-12T04:02:31.36Z     return sum(item.price * item.quantity for item in self._items)
+2026-08-12T04:02:31.38Z =========================== short test summary info ============================
+2026-08-12T04:02:31.40Z FAILED tests/test_cart.py::test_cart_total_rounding - assert 19.990000000000002 == 19.99
+2026-08-12T04:02:31.42Z ======================== 1 failed, 127 passed in 20.22s ========================
+2026-08-12T04:02:31.44Z ##[error]Process completed with exit code 1.
+```

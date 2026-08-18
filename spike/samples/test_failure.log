@@ -1,0 +1,21 @@
+2026-07-25T04:02:11.0031244Z ##[group]Run pytest -v --tb=short
+2026-07-25T04:02:12.7781003Z ============================= test session starts ==============================
+2026-07-25T04:02:12.7782110Z platform linux -- Python 3.11.9, pytest-8.2.0, pluggy-1.5.0
+2026-07-25T04:02:12.7783880Z collected 128 items
+2026-07-25T04:02:13.9910032Z tests/test_cart.py::test_add_item PASSED                                  [  1%]
+2026-07-25T04:02:14.1120043Z tests/test_cart.py::test_remove_item PASSED                               [  2%]
+2026-07-25T04:02:14.3320876Z tests/test_cart.py::test_cart_total_rounding FAILED                       [  3%]
+2026-07-25T04:02:15.5540210Z tests/test_checkout.py::test_apply_coupon PASSED                          [  4%]
+2026-07-25T04:02:31.8872001Z tests/test_orders.py::test_order_history PASSED                           [ 99%]
+2026-07-25T04:02:32.2211004Z =================================== FAILURES ===================================
+2026-07-25T04:02:32.2211660Z ___________________________ test_cart_total_rounding ___________________________
+2026-07-25T04:02:32.2212210Z tests/test_cart.py:87: in test_cart_total_rounding
+2026-07-25T04:02:32.2212880Z     assert cart.total() == 19.99
+2026-07-25T04:02:32.2213512Z E   assert 19.990000000000002 == 19.99
+2026-07-25T04:02:32.2214100Z E    +  where 19.990000000000002 = <bound method Cart.total of <src.cart.Cart object at 0x7f2a1c0d3e50>>()
+2026-07-25T04:02:32.2216001Z src/cart.py:42: in total
+2026-07-25T04:02:32.2216712Z     return sum(item.price * item.quantity for item in self._items)
+2026-07-25T04:02:32.9980021Z =========================== short test summary info ============================
+2026-07-25T04:02:32.9981004Z FAILED tests/test_cart.py::test_cart_total_rounding - assert 19.990000000000002 == 19.99
+2026-07-25T04:02:32.9981660Z ======================== 1 failed, 127 passed in 20.22s ========================
+2026-07-25T04:02:33.1120043Z ##[error]Process completed with exit code 1.

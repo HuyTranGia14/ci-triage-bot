@@ -1,0 +1,164 @@
+TWO HOURS. DO THESE IN ORDER. DO NOT SKIP THE TIMER AT THE END.
+===============================================================
+
+
+T+0:00 — MAKE IT RUN OFFLINE  (2 minutes, cannot fail)
+------------------------------------------------------
+
+    cd D:\CI_Failure_Triage_Bot\demo
+    py triage_demo.py --offline
+
+You should see nine green [n/9] lines, then the JSON, then the comment.
+If that works you already have a demo. Everything after this is upgrade.
+
+
+T+0:05 — MAKE THE REAL API CALL WORK  (10 minutes)
+--------------------------------------------------
+
+    py -m pip install anthropic
+
+Get a key. Console -> https://console.anthropic.com -> API Keys -> Create.
+The key you pasted in chat earlier is compromised. Revoke it and make a new
+one. Then, in the SAME PowerShell window you will present from:
+
+    $env:ANTHROPIC_API_KEY = "sk-ant-..."
+    py triage_demo.py
+
+Step 7 should now say "tool_use returned - 1877 in / 214 out tokens".
+
+If it errors with "credit balance too low", top up $5 at
+console.anthropic.com -> Billing. One demo run costs about $0.01.
+
+If it errors any other way: stop. Use --offline. You have a demo already.
+
+
+T+0:20 — RECORD THE FALLBACK  (10 minutes, DO NOT SKIP)
+-------------------------------------------------------
+
+Win + G, or any screen recorder. Record two clips:
+
+    1.  py triage_demo.py --slow
+    2.  cd ..\spike  and  py debug_trace.py --mode prompt-only
+        then          py debug_trace.py --mode tool-based
+
+Save them to the Desktop. Also take full-window screenshots of both, and
+drop those on hidden backup slides in the deck. Section 4.3 of the
+requirements makes this mandatory, and the marker will look for it.
+
+
+T+0:35 — OPTIONAL: POST TO A REAL GITHUB PR  (20 min, skip if behind)
+---------------------------------------------------------------------
+
+Only do this if the clock says you are ahead. It is a nice-to-have.
+
+  1. github.com -> New repository -> name it "demo-shop" -> Public -> tick
+     "Add a README" -> Create.
+
+  2. In the repo: Add file -> Create new file -> name it  fix.md  ->
+     type anything -> at the bottom pick "Create a NEW BRANCH and start a
+     pull request" -> Propose changes -> Create pull request.
+     Note the PR number, it will be 1.
+
+  3. Token: github.com -> your avatar -> Settings -> Developer settings ->
+     Personal access tokens -> Fine-grained tokens -> Generate new token.
+        Repository access : Only select repositories -> demo-shop
+        Permissions       : Pull requests -> Read and write
+     Generate, copy it.
+
+  4. In your PowerShell window:
+
+        $env:GH_TOKEN = "github_pat_..."
+        $env:GH_REPO  = "YOURNAME/demo-shop"
+        $env:GH_PR    = "1"
+        py triage_demo.py --post
+
+     Step 9 prints the comment URL. Open it in a browser tab and LEAVE THAT
+     TAB OPEN — that is what you show the room.
+
+  If anything here fights you for more than 20 minutes, abandon it and run
+  without --post. The rendered comment is enough.
+
+
+T+1:00 — SET UP THE PRESENTATION WINDOW  (10 minutes)
+-----------------------------------------------------
+
+  - PowerShell -> right-click title bar -> Properties -> Font -> size 20.
+    Anything smaller is unreadable on a projector.
+  - Make the window nearly full screen.
+  - cd D:\CI_Failure_Triage_Bot\demo
+  - Type the command but DO NOT press Enter:
+
+        py triage_demo.py --slow
+
+    The demo should start with one keypress. Never type in front of an
+    audience.
+  - Second tab/window, pre-typed:  cd ..\spike ; py debug_trace.py --mode tool-based
+  - Browser: the PR comment tab, if you got that far.
+  - Alt-Tab order: slides -> terminal -> browser. Practice the switch.
+
+
+T+1:10 — REHEARSE WITH A TIMER  (50 minutes, the most important step)
+---------------------------------------------------------------------
+
+Run the whole thing twice, out loud, standing up, with a phone timer.
+
+Target 26:30 of content. You will be slow the first time. That is normal.
+The second run is the one that counts.
+
+Where the demo sits in the deck: slides 27-34, seven minutes total.
+Suggested split now that the product runs:
+
+    27  the spike framing                    0:30
+    28  the input log                        0:40
+    --- NEW: run  py triage_demo.py --slow   1:30   <- the whole workflow
+    29  A - prompt-only  (live)              1:00
+    30  B - tool-based   (live)              1:00
+    31  it's a tie                           0:50
+    32  why tool-based anyway                0:50
+    33  structure is not semantics           0:40
+    34  the artifact / the real comment      0:20
+
+That is still 7:00. You are cutting ~15 seconds off each of the old demo
+slides to buy the 1:30 for the end-to-end run. Worth it — the workflow demo
+is what earns the 20% "Example / demo" mark.
+
+
+WHAT TO SAY DURING THE WORKFLOW RUN
+-----------------------------------
+
+Do not read the screen. Point at the numbers as they appear.
+
+  "Nine steps, the same nine on the architecture slide."
+  "Signature check first - an unsigned request never reaches the model."
+  "Twelve thousand lines came back. Watch step five."
+  "Twelve thousand down to thirty-eight. That is 99.7 percent thrown away,
+   and it is the step that decides whether this works at all."
+  "Step seven is the only AI in the system. Three seconds."
+  "Validated - and remember, that check is still required, because the
+   six-hundred-character rule is not enforced by the schema."
+  "And that is the comment the developer sees."
+
+
+IF SOMETHING BREAKS ON STAGE
+----------------------------
+
+Do not debug in front of the room. Say one sentence and move:
+
+  API is down / no network   ->  "Network's blocked here, this is the
+                                  recorded run."  Play the clip.
+  Weird error                ->  Ctrl-C, then  py triage_demo.py --offline
+  Projector eats the colours ->  py triage_demo.py --offline --no-color
+
+Every one of these still shows the full nine-step workflow. You cannot
+actually lose this demo.
+
+
+OTHER LOGS YOU CAN RUN
+----------------------
+
+    py triage_demo.py --log dependency
+    py triage_demo.py --log syntax
+    py triage_demo.py --log timeout
+
+Handy if someone in Q&A asks "does it only work on that one log?" Run one
+live. It takes five seconds and it answers the question completely.

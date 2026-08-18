@@ -1,0 +1,16 @@
+2026-07-25T05:20:01.0031244Z ##[group]Run python -m compileall src
+2026-07-25T05:20:02.4410032Z Listing 'src'...
+2026-07-25T05:20:02.5540210Z Compiling 'src/api/routes.py'...
+2026-07-25T05:20:02.6650012Z Compiling 'src/api/schemas.py'...
+2026-07-25T05:20:02.7781003Z Compiling 'src/services/triage.py'...
+2026-07-25T05:20:02.8872001Z ***   File "src/services/triage.py", line 118
+2026-07-25T05:20:02.8873004Z ***     result = await self._claude.complete(prompt
+2026-07-25T05:20:02.8874100Z ***                                                ^
+2026-07-25T05:20:02.8875330Z *** SyntaxError: '(' was never closed
+2026-07-25T05:20:02.9910032Z Compiling 'src/services/__init__.py'...
+2026-07-25T05:20:03.1120043Z ##[error]Process completed with exit code 1.
+2026-07-25T05:20:03.2210034Z ##[group]Run flake8 src --count
+2026-07-25T05:20:04.4430120Z src/services/triage.py:118:52: E999 SyntaxError: '(' was never closed
+2026-07-25T05:20:04.5540210Z 1     E999 SyntaxError
+2026-07-25T05:20:04.6650012Z 1
+2026-07-25T05:20:04.7781003Z ##[error]Process completed with exit code 1.

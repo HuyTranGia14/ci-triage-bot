@@ -1,0 +1,17 @@
+2026-07-25T06:41:09.0031244Z ##[group]Run docker compose up -d --wait
+2026-07-25T06:41:12.1120043Z  Container payments-postgres  Created
+2026-07-25T06:41:13.5540210Z  Container payments-redis  Created
+2026-07-25T06:41:16.2210034Z  Container payments-api  Created
+2026-07-25T06:41:18.4410032Z  Container payments-postgres  Started
+2026-07-25T06:41:20.0021445Z  Container payments-redis  Started
+2026-07-25T06:41:21.9981203Z  Container payments-api  Started
+2026-07-25T06:41:22.5540210Z  Container payments-postgres  Waiting
+2026-07-25T06:41:22.8872001Z  Container payments-api  Waiting
+2026-07-25T06:43:52.2210034Z  Container payments-postgres  Healthy
+2026-07-25T06:46:22.4430120Z  Container payments-api  Waiting
+2026-07-25T06:51:22.4431004Z  Container payments-api  Waiting
+2026-07-25T06:56:22.4431660Z  Container payments-api  Waiting
+2026-07-25T06:56:22.4432210Z dependency failed to start: container payments-api is unhealthy
+2026-07-25T06:56:23.4432880Z ##[error]The operation was canceled.
+2026-07-25T06:56:23.4433512Z ##[error]The job running on runner GitHub Actions 12 has exceeded the maximum execution time of 15 minutes.
+2026-07-25T06:56:24.4434100Z ##[error]Process completed with exit code 143.

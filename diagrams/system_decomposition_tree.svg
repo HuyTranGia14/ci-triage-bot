@@ -1,0 +1,144 @@
+<svg viewBox="0 0 1400 780" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <rect x="0" y="0" width="1400" height="780" fill="#ffffff"/>
+  <text x="700" y="30" font-size="18" font-weight="bold" fill="#1f2937" text-anchor="middle">System Decomposition Tree - CI Failure Triage Bot</text>
+
+  <defs>
+    <marker id="dot" markerWidth="1" markerHeight="1"/>
+  </defs>
+
+  <!-- ============ LEVEL 1 : root ============ -->
+  <rect x="590" y="55" width="220" height="42" rx="4" fill="#1c2f52" stroke="#0f1b30" stroke-width="1.3"/>
+  <text x="700" y="81" font-size="13.5" font-weight="bold" fill="#ffffff" text-anchor="middle">CI Failure Triage Bot</text>
+
+  <!-- ============ LEVEL 2 : 5 components ============ -->
+  <!-- Webhook Handler -->
+  <rect x="75" y="150" width="230" height="52" rx="4" fill="#2f5fa8" stroke="#1c3f70" stroke-width="1.2"/>
+  <text x="190" y="172" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Webhook Handler</text>
+  <text x="190" y="188" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Component</text>
+
+  <!-- Triage Engine -->
+  <rect x="330" y="150" width="230" height="52" rx="4" fill="#2f5fa8" stroke="#1c3f70" stroke-width="1.2"/>
+  <text x="445" y="172" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Triage Engine</text>
+  <text x="445" y="188" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Component</text>
+
+  <!-- Triage History & Dashboard -->
+  <rect x="585" y="150" width="230" height="52" rx="4" fill="#2f5fa8" stroke="#1c3f70" stroke-width="1.2"/>
+  <text x="700" y="172" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Triage History &amp; Dashboard</text>
+  <text x="700" y="188" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Component</text>
+
+  <!-- Configuration & Infrastructure -->
+  <rect x="840" y="150" width="230" height="52" rx="4" fill="#2f5fa8" stroke="#1c3f70" stroke-width="1.2"/>
+  <text x="955" y="172" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Configuration &amp; Infrastructure</text>
+  <text x="955" y="188" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Component</text>
+
+  <!-- Integration -->
+  <rect x="1095" y="150" width="230" height="52" rx="4" fill="#2f5fa8" stroke="#1c3f70" stroke-width="1.2"/>
+  <text x="1210" y="172" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Integration</text>
+  <text x="1210" y="188" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Component</text>
+
+  <!-- root -> level2 lines -->
+  <line x1="700" y1="97" x2="190" y2="150" stroke="#6b7280" stroke-width="1"/>
+  <line x1="700" y1="97" x2="445" y2="150" stroke="#6b7280" stroke-width="1"/>
+  <line x1="700" y1="97" x2="700" y2="150" stroke="#6b7280" stroke-width="1"/>
+  <line x1="700" y1="97" x2="955" y2="150" stroke="#6b7280" stroke-width="1"/>
+  <line x1="700" y1="97" x2="1210" y2="150" stroke="#6b7280" stroke-width="1"/>
+
+  <!-- ============ LEVEL 3 ============ -->
+  <!-- Webhook Handler children -->
+  <rect x="80" y="255" width="105" height="46" rx="4" fill="#5b87c4" stroke="#2f5fa8" stroke-width="1.1"/>
+  <text x="132" y="275" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">WebhookController</text>
+  <text x="132" y="289" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">Component</text>
+
+  <rect x="195" y="255" width="105" height="46" rx="4" fill="#5b87c4" stroke="#2f5fa8" stroke-width="1.1"/>
+  <text x="247" y="275" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">SignatureVerifier</text>
+  <text x="247" y="289" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">Component</text>
+
+  <!-- Triage Engine children (EventFilter removed - single child) -->
+  <rect x="345" y="255" width="200" height="46" rx="4" fill="#5b87c4" stroke="#2f5fa8" stroke-width="1.1"/>
+  <text x="445" y="275" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">TriageService</text>
+  <text x="445" y="289" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">Component</text>
+
+  <!-- Triage History & Dashboard children -->
+  <rect x="590" y="255" width="105" height="46" rx="4" fill="#5b87c4" stroke="#2f5fa8" stroke-width="1.1"/>
+  <text x="642" y="275" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">DashboardController</text>
+  <text x="642" y="289" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">Component</text>
+
+  <rect x="705" y="255" width="105" height="46" rx="4" fill="#5b87c4" stroke="#2f5fa8" stroke-width="1.1"/>
+  <text x="757" y="275" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">HistoryStore</text>
+  <text x="757" y="289" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">Component</text>
+
+  <!-- Configuration & Infrastructure children -->
+  <rect x="845" y="255" width="105" height="46" rx="4" fill="#5b87c4" stroke="#2f5fa8" stroke-width="1.1"/>
+  <text x="897" y="275" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">ConfigManager</text>
+  <text x="897" y="289" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">Component</text>
+
+  <rect x="960" y="255" width="105" height="46" rx="4" fill="#5b87c4" stroke="#2f5fa8" stroke-width="1.1"/>
+  <text x="1012" y="275" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">RepoManager</text>
+  <text x="1012" y="289" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">Component</text>
+
+  <!-- Integration children -->
+  <rect x="1100" y="255" width="105" height="46" rx="4" fill="#5b87c4" stroke="#2f5fa8" stroke-width="1.1"/>
+  <text x="1152" y="275" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">GitHubClient</text>
+  <text x="1152" y="289" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">Component</text>
+
+  <rect x="1215" y="255" width="105" height="46" rx="4" fill="#5b87c4" stroke="#2f5fa8" stroke-width="1.1"/>
+  <text x="1267" y="275" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">ClaudeClient</text>
+  <text x="1267" y="289" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">Component</text>
+
+  <!-- level2 -> level3 lines -->
+  <line x1="190" y1="202" x2="132" y2="255" stroke="#6b7280" stroke-width="1"/>
+  <line x1="190" y1="202" x2="247" y2="255" stroke="#6b7280" stroke-width="1"/>
+  <line x1="445" y1="202" x2="445" y2="255" stroke="#6b7280" stroke-width="1"/>
+  <line x1="700" y1="202" x2="642" y2="255" stroke="#6b7280" stroke-width="1"/>
+  <line x1="700" y1="202" x2="757" y2="255" stroke="#6b7280" stroke-width="1"/>
+  <line x1="955" y1="202" x2="897" y2="255" stroke="#6b7280" stroke-width="1"/>
+  <line x1="955" y1="202" x2="1012" y2="255" stroke="#6b7280" stroke-width="1"/>
+  <line x1="1210" y1="202" x2="1152" y2="255" stroke="#6b7280" stroke-width="1"/>
+  <line x1="1210" y1="202" x2="1267" y2="255" stroke="#6b7280" stroke-width="1"/>
+
+  <!-- ============ LEVEL 4 (leaves) ============ -->
+  <!-- children of WebhookController -->
+  <rect x="30" y="360" width="150" height="46" rx="4" fill="#dbe8fb" stroke="#2f5fa8" stroke-width="1"/>
+  <text x="105" y="380" font-size="10" fill="#1f2937" text-anchor="middle">EventFilter</text>
+  <text x="105" y="394" font-size="10" fill="#1f2937" text-anchor="middle">(filter policy)</text>
+
+  <rect x="200" y="360" width="150" height="46" rx="4" fill="#dbe8fb" stroke="#2f5fa8" stroke-width="1"/>
+  <text x="275" y="380" font-size="10" fill="#1f2937" text-anchor="middle">WebhookPayload</text>
+  <text x="275" y="394" font-size="10" fill="#1f2937" text-anchor="middle">Component (creates)</text>
+
+  <!-- children of TriageService -->
+  <rect x="370" y="360" width="150" height="40" rx="4" fill="#dbe8fb" stroke="#2f5fa8" stroke-width="1"/>
+  <text x="445" y="385" font-size="10" fill="#1f2937" text-anchor="middle">LogTrimmer Component</text>
+
+  <rect x="540" y="360" width="150" height="40" rx="4" fill="#dbe8fb" stroke="#2f5fa8" stroke-width="1"/>
+  <text x="615" y="385" font-size="10" fill="#1f2937" text-anchor="middle">PromptBuilder Component</text>
+
+  <rect x="710" y="360" width="150" height="40" rx="4" fill="#dbe8fb" stroke="#2f5fa8" stroke-width="1"/>
+  <text x="785" y="385" font-size="10" fill="#1f2937" text-anchor="middle">ResponseValidator Comp.</text>
+
+  <rect x="880" y="360" width="150" height="40" rx="4" fill="#dbe8fb" stroke="#2f5fa8" stroke-width="1"/>
+  <text x="955" y="385" font-size="10" fill="#1f2937" text-anchor="middle">MarkdownFormatter Comp.</text>
+
+  <!-- child of HistoryStore -->
+  <rect x="1050" y="360" width="150" height="40" rx="4" fill="#dbe8fb" stroke="#2f5fa8" stroke-width="1"/>
+  <text x="1125" y="385" font-size="10" fill="#1f2937" text-anchor="middle">TriageResult (DTO)</text>
+
+  <!-- child of RepoManager -->
+  <rect x="1220" y="360" width="150" height="40" rx="4" fill="#dbe8fb" stroke="#2f5fa8" stroke-width="1"/>
+  <text x="1295" y="385" font-size="10" fill="#1f2937" text-anchor="middle">RepositoryConfig Comp.</text>
+
+  <!-- level3 -> level4 lines -->
+  <line x1="132" y1="301" x2="105" y2="360" stroke="#6b7280" stroke-width="1"/>
+  <line x1="132" y1="301" x2="275" y2="360" stroke="#6b7280" stroke-width="1"/>
+  <line x1="445" y1="301" x2="445" y2="360" stroke="#6b7280" stroke-width="1"/>
+  <line x1="445" y1="301" x2="615" y2="360" stroke="#6b7280" stroke-width="1"/>
+  <line x1="445" y1="301" x2="785" y2="360" stroke="#6b7280" stroke-width="1"/>
+  <line x1="445" y1="301" x2="955" y2="360" stroke="#6b7280" stroke-width="1"/>
+  <line x1="757" y1="301" x2="1125" y2="360" stroke="#6b7280" stroke-width="1"/>
+  <line x1="1012" y1="301" x2="1295" y2="360" stroke="#6b7280" stroke-width="1"/>
+
+  <!-- ============ notes ============ -->
+  <text x="20" y="440" font-size="11.5" fill="#374151">Note: All leaf nodes are named as Components per revised decomposition convention.</text>
+  <text x="20" y="458" font-size="11.5" fill="#374151">EventFilter now appears exactly once, under WebhookController Component - matching Relationship summary: "WebhookController 1 uses 1 EventFilter".</text>
+  <text x="20" y="476" font-size="11.5" fill="#374151">WebhookPayload is placed under WebhookController (the class that constructs it from the raw request); recommend adding "WebhookController 1 creates 1 WebhookPayload" to the Relationship summary text.</text>
+</svg>
