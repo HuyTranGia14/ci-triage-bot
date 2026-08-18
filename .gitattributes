@@ -1,0 +1,32 @@
+# Mặc định: Git tự nhận diện text file và normalize về LF khi lưu trong repo
+* text=auto eol=lf
+
+# Các loại file text cụ thể - luôn ép về LF
+*.js text eol=lf
+*.jsx text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.sql text eol=lf
+*.py text eol=lf
+*.sh text eol=lf
+
+# Windows-only scripts thì giữ CRLF (vd .bat, .cmd cần CRLF mới chạy đúng trên cmd.exe)
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary files - KHÔNG được đụng vào, tránh Git cố convert làm hỏng file
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.woff binary
+*.woff2 binary
