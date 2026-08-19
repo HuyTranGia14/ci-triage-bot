@@ -1,0 +1,75 @@
+[build-system]
+# "build backend" là công cụ biến source code thành package cài đặt được.
+# hatchling là lựa chọn hiện đại, cấu hình ít, hợp với src-layout.
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ci-triage-bot"
+version = "0.1.0"
+description = "CI Failure Triage Bot -- phan tich CI run that bai va post triage comment len GitHub PR"
+readme = "CLAUDE.md"
+requires-python = ">=3.11"
+
+# Dependencies RUNTIME -- thu bot can de CHAY, theo kien truc da chot trong TECH_BRIEF.md.
+# Khong ghim phien ban tuyet doi o giai doan nay, chi dat can duoi hop ly (">=").
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pydantic>=2.8",
+    "pydantic-settings>=2.4",
+    "sqlalchemy>=2.0",
+    "httpx>=0.27",
+    "anthropic>=0.34",
+    "jinja2>=3.1",
+]
+
+[project.optional-dependencies]
+# Dependencies DEV -- chi ban can khi PHAT TRIEN, khong bao gio len production.
+# Tach rieng vi 2 ly do: (1) production khong nen cai pytest/mypy vo ich,
+# (2) day la thoi quen se gap lai khi lam Docker multi-stage build sau nay.
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "pytest-asyncio>=0.23",
+    "respx>=0.21",
+    "ruff>=0.6",
+    "mypy>=1.11",
+]
+
+[tool.hatch.build.targets.wheel]
+# QUAN TRONG: ten project la "ci-triage-bot" (dau gach ngang, quy uoc dat ten tren PyPI)
+# nhung ten package import duoc la "ci_triage" (dau gach duoi, vi Python khong cho
+# dau gach ngang trong ten module). Hai ten nay LECH nhau, nen hatchling khong tu doan
+# duoc package nam o dau -- phai khai bao tay dong nay, neu khong "pip install -e ."
+# se chay "thanh cong" nhung khong co gi duoc cai ca.
+packages = ["src/ci_triage"]
+
+[tool.ruff]
+# Do dai dong toi da. 100 la muc pho bien, thoai mai hon 79 kinh dien ma van doc duoc.
+line-length = 100
+target-version = "py311"
+# demo/ va spike/ dang DONG BANG (xem CONTRIBUTING.md) -- khong ep chung qua lint moi.
+extend-exclude = ["demo", "spike"]
+
+[tool.ruff.lint]
+# E, F = loi co ban (pycodestyle, pyflakes): bien khong dung, cu phap sai...
+# I    = isort: tu dong sap xep thu tu import
+# B    = flake8-bugbear: bat cac bay Python kinh dien (vd: mutable default argument)
+# UP   = pyupgrade: goi y cu phap Python moi hon khi ban dung cu phap cu
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.mypy]
+python_version = "3.11"
+# Bat buoc moi ham trong src/ phai co type hint. Day la muc "vua phai" --
+# khong bat strict=true ngay tu dau, vi de bien thanh ep viet "# type: ignore" khap noi.
+disallow_untyped_defs = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+exclude = ["demo/", "spike/"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# --cov=ci_triage: do coverage tren package ci_triage khi chay pytest
+# --cov-report=term-missing: in ra ngay trong terminal nhung DONG nao chua duoc test toi
+addopts = "--cov=ci_triage --cov-report=term-missing"
